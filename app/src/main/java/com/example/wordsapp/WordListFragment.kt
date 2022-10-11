@@ -24,29 +24,29 @@ class WordListFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentWordListBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = WordAdapter(activity?.intent?.extras?.getString(LETTER).toString(), requireContext())
+        recyclerView.adapter =
+            WordAdapter(activity?.intent?.extras?.getString(LETTER).toString(), requireContext())
 
         recyclerView.addItemDecoration(
             DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         )
-
-        //title = getString(R.string.detail_prefix) + " " + letterId
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-    
+
 }
